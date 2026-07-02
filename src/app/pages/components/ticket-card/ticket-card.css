@@ -1,0 +1,31 @@
+:host { display: block; }
+
+.ticket {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px;
+  margin-bottom: 10px;
+  cursor: grab;
+  transition: box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+.ticket:hover { box-shadow: 0 4px 14px rgba(17, 24, 39, 0.08); border-color: #D1D5DB; }
+.ticket:active { cursor: grabbing; }
+
+.ticket-title { font-size: 0.9rem; font-weight: 600; color: var(--text); margin-bottom: 10px; }
+
+.ticket-meta { display: flex; align-items: center; }
+
+.priority-badge {
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 999px;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.priority-badge.high { background: var(--danger-soft); color: var(--danger); }
+.priority-badge.medium { background: var(--warning-soft); color: var(--warning); }
+.priority-badge.low { background: var(--neutral-soft); color: var(--neutral); }

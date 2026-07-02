@@ -1,0 +1,7 @@
+<nav class="navbar" *ngIf="!isLoginPage">
+  <div class="navbar-brand">TICKET<span>://</span>SYSTEM</div>
+  <div class="navbar-actions">
+    <button class="nav-btn" (click)="resetDemo()">Reset demo</button>
+    <button class="nav-btn nav-btn-ghost" (click)="logout()">Log out</button>
+  </div>
+</nav>

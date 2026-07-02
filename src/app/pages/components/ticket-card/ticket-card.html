@@ -1,0 +1,9 @@
+<div class="ticket" (click)="open.emit(ticket)">
+  <div class="ticket-title">{{ ticket.title }}</div>
+  <div class="ticket-meta">
+    <span class="priority-badge"
+          [class.high]="ticket.priority === 'High'"
+          [class.medium]="ticket.priority === 'Medium'"
+          [class.low]="ticket.priority === 'Low'">{{ ticket.priority }}</span>
+  </div>
+</div>

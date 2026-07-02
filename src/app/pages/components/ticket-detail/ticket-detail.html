@@ -1,0 +1,16 @@
+<div class="detail-backdrop" (click)="close.emit()"></div>
+<aside class="detail-panel">
+  <div class="detail-header">
+    <span class="detail-id">#{{ ticket.id }}</span>
+    <button class="detail-close" (click)="close.emit()" aria-label="Close">×</button>
+  </div>
+
+  <app-ticket-form
+    mode="edit"
+    [initial]="{ title: ticket.title, priority: ticket.priority, status: ticket.status }"
+    (submitForm)="onSubmit($event)"
+    (cancelForm)="close.emit()">
+  </app-ticket-form>
+
+  <button class="detail-delete" (click)="deleteTicket.emit(ticket.id)">Delete ticket</button>
+</aside>

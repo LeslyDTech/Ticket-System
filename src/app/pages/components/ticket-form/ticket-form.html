@@ -1,0 +1,32 @@
+<div class="ticket-form">
+  <div class="form-row">
+    <input
+      [(ngModel)]="title"
+      placeholder="Ticket title..."
+      (keyup.enter)="submit()"
+      class="form-input">
+  </div>
+
+  <div class="form-row form-row-split">
+    <select [(ngModel)]="priority" class="form-select">
+      <option value="Low">Low priority</option>
+      <option value="Medium">Medium priority</option>
+      <option value="High">High priority</option>
+    </select>
+
+    <select *ngIf="mode === 'edit'" [(ngModel)]="status" class="form-select">
+      <option value="Open">Open</option>
+      <option value="In Progress">In Progress</option>
+      <option value="Closed">Closed</option>
+    </select>
+  </div>
+
+  <div class="form-actions">
+    <button class="form-btn form-btn-primary" (click)="submit()">
+      {{ mode === 'create' ? '+ Create ticket' : 'Save changes' }}
+    </button>
+    <button *ngIf="mode === 'edit'" class="form-btn form-btn-ghost" (click)="cancelForm.emit()">
+      Cancel
+    </button>
+  </div>
+</div>

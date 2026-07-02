@@ -1,0 +1,72 @@
+<div class="board">
+
+  <div class="board-header">
+    <div>
+      <h1 class="board-title">Ticket System</h1>
+      <div class="board-subtitle">Helpdesk triage board — {{ tickets.length }} total tickets</div>
+    </div>
+  </div>
+
+  <div class="stat-row">
+    <div class="stat-card">
+      <div class="stat-icon total">{{ tickets.length }}</div>
+      <div><div class="stat-value">{{ tickets.length }}</div><div class="stat-label">Total tickets</div></div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon open">{{ getColumn('Open').length }}</div>
+      <div><div class="stat-value">{{ getColumn('Open').length }}</div><div class="stat-label">Open</div></div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon progress">{{ getColumn('In Progress').length }}</div>
+      <div><div class="stat-value">{{ getColumn('In Progress').length }}</div><div class="stat-label">In progress</div></div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon closed">{{ getColumn('Closed').length }}</div>
+      <div><div class="stat-value">{{ getColumn('Closed').length }}</div><div class="stat-label">Closed</div></div>
+    </div>
+  </div>
+
+  <div class="create-panel">
+    <input [(ngModel)]="title" placeholder="New ticket title..." (keyup.enter)="addTicket()">
+    <select [(ngModel)]="priority">
+      <option value="Low">Low priority</option>
+      <option value="Medium">Medium priority</option>
+      <option value="High">High priority</option>
+    </select>
+    <button class="create-btn" (click)="addTicket()">+ Create ticket</button>
+  </div>
+
+  <div class="kanban" cdkDropListGroup>
+
+    <div class="column" cdkDropList [cdkDropListData]="getColumn('Open')" (cdkDropListDropped)="drop($event, 'Open')">
+      <div class="column-header">
+        <span class="column-dot dot-open"></span>
+        <span class="column-title">Open</span>
+        <span class="column-count">{{ getColumn('Open').length }}</span>
+      </div>
+      <app-ticket-card *ngFor="let ticket of getColumn('Open')" cdkDrag [ticket]="ticket" (open)="selectTicket($event)"></app-ticket-card>
+    </div>
+
+    <div class="column" cdkDropList [cdkDropListData]="getColumn('In Progress')" (cdkDropListDropped)="drop($event, 'In Progress')">
+      <div class="column-header">
+        <span class="column-dot dot-progress"></span>
+        <span class="column-title">In Progress</span>
+        <span class="column-count">{{ getColumn('In Progress').length }}</span>
+      </div>
+      <app-ticket-card *ngFor="let ticket of getColumn('In Progress')" cdkDrag [ticket]="ticket" (open)="selectTicket($event)"></app-ticket-card>
+    </div>
+
+    <div class="column" cdkDropList [cdkDropListData]="getColumn('Closed')" (cdkDropListDropped)="drop($event, 'Closed')">
+      <div class="column-header">
+        <span class="column-dot dot-closed"></span>
+        <span class="column-title">Closed</span>
+        <span class="column-count">{{ getColumn('Closed').length }}</span>
+      </div>
+      <app-ticket-card *ngFor="let ticket of getColumn('Closed')" cdkDrag [ticket]="ticket" (open)="selectTicket($event)"></app-ticket-card>
+    </div>
+
+  </div>
+
+  <app-ticket-detail *ngIf="selectedTicket" [ticket]="selectedTicket" (save)="saveDetail($event)" (deleteTicket)="deleteTicket($event)" (close)="closeDetail()"></app-ticket-detail>
+
+</div>

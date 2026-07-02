@@ -1,0 +1,41 @@
+<div class="login-wrap">
+  <div class="login-card">
+
+    <div class="login-form-side">
+      <div class="login-eyebrow">// authenticate</div>
+      <h1 class="login-title">Ticket System Login</h1>
+
+      <form>
+        <div class="login-field">
+          <label for="email">Email</label>
+          <input
+            id="email"
+            type="email"
+            placeholder="you@company.com"
+            [(ngModel)]="email"
+            name="email">
+        </div>
+
+        <div class="login-field">
+          <label for="password">Password</label>
+          <input
+            id="password"
+            type="password"
+            placeholder="••••••••"
+            [(ngModel)]="password"
+            name="password">
+        </div>
+
+        <button type="button" class="login-btn" (click)="login()">
+          Sign in
+        </button>
+      </form>
+    </div>
+
+    <div class="login-info-side">
+      <h2 class="login-info-title">IT Ticket System</h2>
+      <p class="login-info-text">Track, triage, and resolve support tickets from a single board. Drag tickets between Open, In Progress, and Closed to update their status in real time.</p>
+    </div>
+
+  </div>
+</div>

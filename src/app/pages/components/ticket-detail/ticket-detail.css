@@ -1,0 +1,41 @@
+.detail-backdrop { position: fixed; inset: 0; background: rgba(17, 24, 39, 0.4); z-index: 20; }
+
+.detail-panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 380px;
+  max-width: 90vw;
+  background: var(--surface);
+  border-left: 1px solid var(--border);
+  padding: 24px;
+  z-index: 21;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  box-shadow: -8px 0 24px rgba(17, 24, 39, 0.08);
+  animation: slide-in 0.2s ease;
+}
+
+@keyframes slide-in { from { transform: translateX(100%); } to { transform: translateX(0); } }
+
+.detail-header { display: flex; justify-content: space-between; align-items: center; }
+.detail-id { font-size: 0.8rem; font-weight: 600; color: var(--text-dim); }
+
+.detail-close { background: none; border: none; color: var(--text-dim); font-size: 1.4rem; cursor: pointer; line-height: 1; }
+.detail-close:hover { color: var(--text); }
+
+.detail-delete {
+  margin-top: auto;
+  background: var(--danger-soft);
+  border: 1px solid transparent;
+  color: var(--danger);
+  font-weight: 700;
+  font-size: 0.85rem;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.detail-delete:hover { background: #FCA5A5; }
